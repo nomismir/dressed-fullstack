@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-shadow {
+  text-shadow: 1px -2px 2px rgba(0, 0, 0, 0.7);
+}
+
+*>.swiper-wrapper {
+  align-items: center !important;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .hero iframe {
+    /* height = 100 * (9 / 16) = 56.25 */
+    height: 56.25vw;
+  }
+
+  .hero::before {
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .hero::before {
+    width: 177.78vh;
+  }
+
+  .hero iframe {
+    /* width = 100 / (9 / 16) = 177.777777 */
+    width: 177.78vh;
+  }
+}
