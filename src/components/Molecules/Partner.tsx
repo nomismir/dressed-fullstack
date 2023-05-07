@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Bouygues from '@/images/partner/bouygues.webp';
-import Celio from '@/images/partner/celio.webp';
-import Emmaus from '@/images/partner/emmaus.webp';
-import Lyrique from '@/images/partner/lyrique.webp';
-import Nexity from '@/images/partner/nexity.webp';
-import Panopli from '@/images/partner/panopli.webp';
-import Play from '@/images/partner/play.webp';
-import Qonto from '@/images/partner/qonto.webp';
-import Tenue from '@/images/partner/tenue.webp';
+import Bouygues from '@/assets/images/partner/bouygues.webp';
+import Celio from '@/assets/images/partner/celio.webp';
+import Emmaus from '@/assets/images/partner/emmaus.webp';
+import Lyrique from '@/assets/images/partner/lyrique.webp';
+import Nexity from '@/assets/images/partner/nexity.webp';
+import Panopli from '@/assets/images/partner/panopli.webp';
+import Play from '@/assets/images/partner/play.webp';
+import Qonto from '@/assets/images/partner/qonto.webp';
+import Tenue from '@/assets/images/partner/tenue.webp';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 

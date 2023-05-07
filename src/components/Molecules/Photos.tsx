@@ -1,6 +1,6 @@
 import Gallery from 'react-photo-gallery';
 import React from 'react';
-import { photos } from '@/photos';
+import { photos } from '@/utils/photos';
 
 type Props = {};
 

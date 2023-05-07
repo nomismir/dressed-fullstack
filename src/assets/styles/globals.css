@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,12 +21,8 @@
 }
 
 #player {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 100vw;
   height: 100vh;
-  transform: translate(-50%, -60%);
   z-index: 0;
   pointer-events: none;
 }
