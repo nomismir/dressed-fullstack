@@ -1,4 +1,4 @@
-import Footer from '@/components/Molecules/Footer';
+import Footer from '@/components/Organisms/Footer';
 import QA from '@/components/Molecules/QA';
 import Partner from '@/components/Molecules/Partner';
 import SocialNetwork from '@/components/Molecules/SocialNetwork';

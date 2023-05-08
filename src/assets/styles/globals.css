@@ -12,6 +12,11 @@
   align-items: center !important;
 }
 
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
 .hero {
   width: 100%;
   min-height: 100vh;

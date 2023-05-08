@@ -6,6 +6,7 @@ type Props = {
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
     isDisabled?: boolean;
+    isPill?: boolean;
     style?: 'primary' | 'secondary';
     size?: 'sm' | 'md' | 'lg' | 'xl';
     fontWeight?: 'thin' | 'medium' | 'bold' | 'semibold';
@@ -13,11 +14,11 @@ type Props = {
 };
 
 const classes = {
-    base: 'flex items-center gap-3 rounded-2xl w-fit',
-    disabled: 'opacity-50 cursor-not-allowed',
+    base: 'flex items-center gap-3 w-fit',
+    disabled: 'opacity-30 cursor-not-allowed',
     style: {
-        primary: 'bg-primary text-white',
-        secondary: 'bg-white',
+        primary: 'bg-primary text-white border border-primary',
+        secondary: 'border-2 border-primary',
     },
     size: {
         sm: 'text-sm p-2',
@@ -34,15 +35,17 @@ const Button: React.FC<Props> = ({
     onClick,
     type,
     isDisabled,
+    isPill,
     style = 'primary',
     size = 'md',
     fontWeight = 'medium',
     scale,
 }) => {
     scale = isDisabled ? false : scale;
+    const rounded = isPill ? 'rounded-full' : 'rounded-2xl';
     const componentClasses = `${classes.base} ${classes.style[style]} ${
         classes.size[size]
-    } font-${fontWeight} ${scale ? classes.scale : ''}`;
+    } font-${fontWeight} ${scale ? classes.scale : ''} ${rounded}`;
     if (!target)
         return (
             <button

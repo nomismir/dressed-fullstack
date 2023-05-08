@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@/components/Atoms/Button';
-import Navbar from '@/components/Molecules/Navbar';
+import Navbar from '@/components/Organisms/Navbar';
 import DressedLogo from '@/assets/images/dressed_logo.png';
 import Image from 'next/image';
 import ReactPlayer from 'react-player';
@@ -10,7 +10,7 @@ type Props = {};
 const HeroSection = (props: Props) => {
     return (
         <section className="flex flex-col items-center justify-center w-screen h-screen relative overflow-hidden">
-            <Navbar is-transparent />
+            <Navbar isTransparent />
             <ReactPlayer
                 id="player"
                 playing={true}
