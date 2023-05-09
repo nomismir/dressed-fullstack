@@ -9,9 +9,14 @@ const FormSignup = () => {
     const stepsNumber: number = 4;
     const [currentStep, setCurrentStep] = useState<number>(1);
 
-    function addStep() {
+    function nextStep() {
         if (currentStep === stepsNumber) return;
         setCurrentStep(currentStep + 1);
+    }
+
+    function previousStep() {
+        if (currentStep === 1) return;
+        setCurrentStep(currentStep - 1);
     }
 
     const steps: StepFormSignup[] = [
@@ -19,7 +24,7 @@ const FormSignup = () => {
             title: 'Informations personnelles',
             inputs: [
                 {
-                    placeholder: 'Prénom',
+                    label: 'Prénom',
                     isRequired: true,
                     type: InputTypeEnum.String,
                     value: null,
@@ -27,7 +32,7 @@ const FormSignup = () => {
                     max: 100,
                 },
                 {
-                    placeholder: 'Nom',
+                    label: 'Nom',
                     isRequired: true,
                     type: InputTypeEnum.String,
                     value: null,
@@ -35,7 +40,7 @@ const FormSignup = () => {
                     max: 100,
                 },
                 {
-                    placeholder: 'Age',
+                    label: 'Age',
                     isRequired: true,
                     type: InputTypeEnum.Number,
                     value: null,
@@ -43,7 +48,7 @@ const FormSignup = () => {
                     max: 77,
                 },
                 {
-                    placeholder: 'Email',
+                    label: 'Email',
                     isRequired: true,
                     type: InputTypeEnum.Mail,
                     value: null,
@@ -56,9 +61,15 @@ const FormSignup = () => {
             title: 'Situation',
             inputs: [
                 {
-                    placeholder: 'Résides-tu à Paris ?',
+                    label: 'Résides-tu à Paris ?',
                     isRequired: true,
                     type: InputTypeEnum.String,
+                    value: null,
+                },
+                {
+                    label: `Es-tu bénéficiaire d'une bourse sur critères sociaux ?`,
+                    isRequired: true,
+                    type: InputTypeEnum.Toggle,
                     value: null,
                 },
             ],
@@ -76,12 +87,11 @@ const FormSignup = () => {
                     return <FormSignupStep step={step} />;
             })}
 
-            {/* {steps.map((step) => (
-                <FormSignupStep step={step} />
-            ))} */}
             <FormSignupFooter
                 currentStep={currentStep}
                 stepsNumber={stepsNumber}
+                handleNextStep={() => nextStep()}
+                handlePreviousStep={() => previousStep()}
             />
         </main>
     );

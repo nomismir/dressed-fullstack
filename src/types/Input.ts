@@ -5,4 +5,5 @@ export enum InputTypeEnum {
     Datetime = 'date',
     Select = 'select',
     File = 'file',
+    Toggle = 'toggle',
 }

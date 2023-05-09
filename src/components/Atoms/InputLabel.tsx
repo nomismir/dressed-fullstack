@@ -2,14 +2,16 @@ import React from 'react';
 import { InputTypeEnum } from '@/types/Input';
 
 type Props = {
-    placeholder: string;
+    label: string;
+    placeholder?: string;
     isRequired?: boolean;
     type: InputTypeEnum;
     min?: number;
     max?: number;
 };
 
-const Input: React.FC<Props> = ({
+const InputLabel: React.FC<Props> = ({
+    label,
     placeholder,
     isRequired,
     type,
@@ -19,7 +21,7 @@ const Input: React.FC<Props> = ({
     return (
         <div className="flex flex-col">
             <label>
-                {placeholder}{' '}
+                {label}{' '}
                 <span className="text-primary">{isRequired ? '*' : ''}</span>
             </label>
             <input
@@ -29,12 +31,9 @@ const Input: React.FC<Props> = ({
                 type={type}
                 min={min}
                 max={max}
-                onChange={(e) => {
-                    console.log(e.target.value);
-                }}
             ></input>
         </div>
     );
 };
 
-export default Input;
+export default InputLabel;
