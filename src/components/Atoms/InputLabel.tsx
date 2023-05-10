@@ -1,5 +1,5 @@
-import React from 'react';
-import { InputTypeEnum } from '@/types/Input';
+import React, { useState } from 'react';
+import { InputTypeEnum, SelectChoice } from '@/types/Input';
 
 type Props = {
     label: string;
@@ -8,6 +8,8 @@ type Props = {
     type: InputTypeEnum;
     min?: number;
     max?: number;
+    data?: SelectChoice[];
+    onChange: (value: string | number) => void;
 };
 
 const InputLabel: React.FC<Props> = ({
@@ -17,21 +19,88 @@ const InputLabel: React.FC<Props> = ({
     type,
     min,
     max,
+    data,
+    onChange,
 }) => {
+    const [value, setValue] = useState('');
+
+    const handleChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
+        setValue(event.target.value);
+        onChange(event.target.value);
+    };
+
+    function defineInput() {
+        switch (type) {
+            case InputTypeEnum.String:
+                return (
+                    <input
+                        type="text"
+                        placeholder={placeholder}
+                        className="input w-full"
+                        value={value}
+                        onChange={handleChange}
+                    />
+                );
+            case InputTypeEnum.Number:
+                return (
+                    <input
+                        type="number"
+                        placeholder={placeholder}
+                        className="input w-full"
+                        min={min}
+                        max={max}
+                        value={value}
+                        onChange={handleChange}
+                    />
+                );
+            case InputTypeEnum.Mail:
+                return (
+                    <input
+                        type="email"
+                        placeholder={placeholder}
+                        className="input w-full"
+                        value={value}
+                        onChange={handleChange}
+                    />
+                );
+            case InputTypeEnum.Select:
+                return (
+                    <select
+                        className="select w-full"
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <option disabled selected>
+                            Choix
+                        </option>
+                        {data.map((d) => {
+                            return <option key={d.key}>{d.value}</option>;
+                        })}
+                    </select>
+                );
+            case InputTypeEnum.File:
+                return <input type="file" className="file-input w-full " />;
+            case InputTypeEnum.Toggle:
+                return (
+                    <input
+                        type="checkbox"
+                        className="toggle"
+                        value={value}
+                        onChange={handleChange}
+                    />
+                );
+        }
+    }
+
     return (
         <div className="flex flex-col">
-            <label>
+            <label className="pb-3">
                 {label}{' '}
                 <span className="text-primary">{isRequired ? '*' : ''}</span>
             </label>
-            <input
-                className="rounded-md border border-grey-200 px-3 py-2 mt-2 bg-white bg-opacity-50 focus:outline-primary"
-                placeholder={placeholder}
-                is-required={isRequired}
-                type={type}
-                min={min}
-                max={max}
-            ></input>
+            {defineInput()}
         </div>
     );
 };

@@ -7,3 +7,8 @@ export enum InputTypeEnum {
     File = 'file',
     Toggle = 'toggle',
 }
+
+export type SelectChoice = {
+    key: string | number;
+    value: string | number;
+};

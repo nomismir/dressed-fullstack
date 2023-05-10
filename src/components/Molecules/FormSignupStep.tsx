@@ -13,9 +13,11 @@ const FormSignupStep: React.FC<Props> = ({ step }) => {
             <div className="grid grid-cols-2 gap-4 py-5">
                 {step.inputs.map((input) => (
                     <InputLabel
+                        key={input.label}
                         label={input.label}
                         isRequired={input.isRequired}
                         type={input.type}
+                        onChange={(value) => console.log(value)}
                     />
                 ))}
             </div>

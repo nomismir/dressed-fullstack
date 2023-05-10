@@ -84,7 +84,7 @@ const FormSignup = () => {
                     steps.findIndex((s) => s.title === step.title) + 1 ===
                     currentStep
                 )
-                    return <FormSignupStep step={step} />;
+                    return <FormSignupStep key={step.title} step={step} />;
             })}
 
             <FormSignupFooter
