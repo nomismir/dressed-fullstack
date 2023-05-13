@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Atoms/Button';
+import Button from '../../Atoms/Button';
 
 type Props = {
     stepsNumber: number;
@@ -30,7 +30,7 @@ const FormSignupFooter: React.FC<Props> = ({
                 <div>
                     <Button
                         onClick={handleNextStep}
-                        isDisabled={currentStep === stepsNumber - 1}
+                        isDisabled={currentStep === stepsNumber}
                         isPill
                     >
                         Suivant

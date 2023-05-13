@@ -1,5 +1,5 @@
 import Navbar from '@/components/Organisms/Navbar';
-import FormSignup from '@/components/Molecules/FormSignup';
+import FormSignup from '@/components/Molecules/FormSignup/FormSignup';
 
 export default function Signup() {
     return (
