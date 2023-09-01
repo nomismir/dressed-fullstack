@@ -30,12 +30,13 @@ const InputLabel: React.FC<Props> = ({
     onChange,
 }) => {
     const [value, setValue] = useState({
-        date: new Date(),
+        startDate: new Date(),
+        endDate: new Date(new Date().setMonth(11)),
     });
 
     const handleValueChange = (newValue) => {
-        console.log('newValue:', newValue);
         setValue(newValue);
+        onChange(datepickerParams?.asSingle ? newValue.startDate : newValue);
     };
 
     const disabledClasses = isDisabled ? 'opacity-50 cursor-not-allowed' : '';
@@ -47,7 +48,7 @@ const InputLabel: React.FC<Props> = ({
                         type="text"
                         placeholder={placeholder}
                         disabled={isDisabled}
-                        className="input w-full"
+                        className="input w-full border border-gray-500"
                         onChange={(event) => onChange(event.target.value)}
                     />
                 );
@@ -57,7 +58,7 @@ const InputLabel: React.FC<Props> = ({
                         type="number"
                         placeholder={placeholder}
                         disabled={isDisabled}
-                        className="input w-full"
+                        className="input w-full border border-gray-500"
                         min={min}
                         max={max}
                         onChange={(event) => onChange(event.target.value)}
@@ -69,7 +70,7 @@ const InputLabel: React.FC<Props> = ({
                         type="email"
                         placeholder={placeholder}
                         disabled={isDisabled}
-                        className="input w-full"
+                        className="input w-full border border-gray-500"
                         onChange={(event) => onChange(event.target.value)}
                     />
                 );
@@ -91,7 +92,8 @@ const InputLabel: React.FC<Props> = ({
                     <input
                         type="file"
                         disabled={isDisabled}
-                        className="file-input w-full "
+                        className="file-input w-full"
+                        onChange={(event) => console.log(event)}
                     />
                 );
             case InputTypeEnum.Toggle:
@@ -115,6 +117,7 @@ const InputLabel: React.FC<Props> = ({
                                     <input
                                         disabled={isDisabled}
                                         type="radio"
+                                        onChange={() => onChange(d.key)}
                                         id={`${name}-${d.key.toString()}`}
                                         name={name}
                                         className="radio"
@@ -128,6 +131,7 @@ const InputLabel: React.FC<Props> = ({
             case InputTypeEnum.Datetime:
                 return (
                     <Datepicker
+                        inputClassName="h-12 w-full rounded-lg px-5"
                         value={value}
                         onChange={handleValueChange}
                         asSingle={datepickerParams?.asSingle}

@@ -32,12 +32,12 @@ const Navbar: React.FC<Props> = ({ isTransparent }) => {
         <div
             className={`${
                 isTransparent ? transparentClasses : ''
-            } h-20 z-10 w-screen px-20 flex items-center justify-between`}
+            } h-20 z-10 w-screen px-10 md:px-20 flex items-center justify-between`}
         >
             <a href="./">
                 <span className="text-3xl font-bold">Dressed.</span>
             </a>
-            <ul className="flex items-center gap-10">
+            <ul className="hidden md:flex items-center gap-10">
                 {links.map((link) => (
                     <li key={link.link}>
                         <a href={link.link}>{link.text}</a>

@@ -1,18 +1,12 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
+import { FormValues, UseFormReturnType } from '@/types/Form';
 
-type FormValues = {
-    [key: string]: string;
-};
+export function useForm<T extends FormValues>(
+    initialValues: T
+): UseFormReturnType<T> {
+    const [values, setValues] = useState<T>(initialValues);
 
-type UseFormReturnType = [
-    FormValues,
-    (name: string, value: string | number) => void
-];
-
-export const useForm = (initialValues: FormValues): UseFormReturnType => {
-    const [values, setValues] = useState<FormValues>(initialValues);
-
-    const handleInputChange = (name: string, value: string) => {
+    const handleInputChange = (name: string, value: string | number) => {
         setValues({
             ...values,
             [name]: value,
@@ -21,4 +15,4 @@ export const useForm = (initialValues: FormValues): UseFormReturnType => {
     };
 
     return [values, handleInputChange];
-};
+}

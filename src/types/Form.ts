@@ -1,9 +1,13 @@
 import { InputTypeEnum } from './Input';
 
-export type StepFormSignup = {
-    title: string;
-    inputs: InputForm[];
+export type FormValues = {
+    [key: string]: string | number;
 };
+
+export type UseFormReturnType<T extends FormValues> = [
+    T,
+    (name: string, value: string | number) => void
+];
 
 export type InputForm = {
     label: string;

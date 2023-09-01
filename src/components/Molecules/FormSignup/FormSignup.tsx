@@ -1,35 +1,49 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProgressBar from '../../Atoms/ProgressBar';
 import FormSignupStepOne from './FormSignupStepOne';
 import FormSignupStepTwo from './FormSignupStepTwo';
 import FormSignupStepThree from './FormSignupStepThree';
 import FormSignupStepFour from './FormSignupStepFour';
 import FormSignupFooter from './FormSignupFooter';
+import { useSignUpForm } from '@/hooks/useSignUpForm';
 
 const FormSignup = () => {
-    const stepsNumber: number = 4;
-    const [currentStep, setCurrentStep] = useState<number>(1);
-
-    function nextStep() {
-        if (currentStep === stepsNumber) return;
-        setCurrentStep(currentStep + 1);
-    }
-
-    function previousStep() {
-        if (currentStep === 1) return;
-        setCurrentStep(currentStep - 1);
-    }
+    const {
+        stepsNumber,
+        currentStep,
+        values,
+        nextStep,
+        previousStep,
+        handleInputChanges,
+    } = useSignUpForm();
 
     function setStep() {
         switch (currentStep) {
             case 1:
-                return <FormSignupStepOne />;
+                return (
+                    <FormSignupStepOne
+                        handleInputChanges={handleInputChanges}
+                    />
+                );
             case 2:
-                return <FormSignupStepTwo />;
+                return (
+                    <FormSignupStepTwo
+                        handleInputChanges={handleInputChanges}
+                        values={values}
+                    />
+                );
             case 3:
-                return <FormSignupStepThree />;
+                return (
+                    <FormSignupStepThree
+                        handleInputChanges={handleInputChanges}
+                    />
+                );
             case 4:
-                return <FormSignupStepFour />;
+                return (
+                    <FormSignupStepFour
+                        handleInputChanges={handleInputChanges}
+                    />
+                );
             default:
                 return <h2>ERROR</h2>;
         }

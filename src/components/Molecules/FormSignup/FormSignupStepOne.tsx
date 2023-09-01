@@ -1,22 +1,16 @@
 import { InputTypeEnum } from '@/types/Input';
 import React from 'react';
-import { useForm } from '../../../hooks/useForm';
 import InputLabel from '../../Atoms/InputLabel';
 
-type Props = {};
+type Props = {
+    handleInputChanges: (key: string, value: string | number) => void;
+};
 
-const FormSignupOne: React.FC<Props> = () => {
-    const [values, handleInputChanges] = useForm({
-        firstName: '',
-        lastName: '',
-        age: '',
-        email: '',
-    });
-
+const FormSignupOne: React.FC<Props> = ({ handleInputChanges }) => {
     return (
         <div>
             <h2 className="text-lg font-semibold">Informations personnelles</h2>
-            <div className="grid grid-cols-2 gap-4 py-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
                 <InputLabel
                     label="Prénom"
                     isRequired

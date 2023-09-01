@@ -15,7 +15,7 @@ const FormSignupFooter: React.FC<Props> = ({
     handlePreviousStep,
 }) => {
     return (
-        <div className="flex items-center justify-end mt-5">
+        <div className="flex items-center sticky bottom-0 left-0 justify-end py-4 bg-white">
             <div className="flex items-center gap-3">
                 <div>
                     <Button
@@ -28,12 +28,8 @@ const FormSignupFooter: React.FC<Props> = ({
                     </Button>
                 </div>
                 <div>
-                    <Button
-                        onClick={handleNextStep}
-                        isDisabled={currentStep === stepsNumber}
-                        isPill
-                    >
-                        Suivant
+                    <Button onClick={handleNextStep} isPill>
+                        {currentStep === stepsNumber ? `M'inscrire` : 'Suivant'}
                     </Button>
                 </div>
             </div>

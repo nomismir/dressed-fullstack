@@ -1,28 +1,13 @@
 import { DateParams, InputTypeEnum } from '@/types/Input';
 import React from 'react';
-import { useForm } from '../../../hooks/useForm';
 import InputLabel from '../../Atoms/InputLabel';
-import { SelectChoice } from '@/types/Input';
+import { participationChoices } from '@/types/SignUp';
 
-type Props = {};
+type Props = {
+    handleInputChanges: (key: string, value: string | number) => void;
+};
 
-const FormSignupThree: React.FC<Props> = () => {
-    const [values, handleInputChanges] = useForm({
-        participation: null,
-        date: null,
-    });
-
-    const participationChoices: SelectChoice[] = [
-        {
-            key: 0,
-            value: 'Je souhaite profiter du Pop Up Store',
-        },
-        {
-            key: 1,
-            value: 'Je ne souhaite pas profiter du Pop Up Store',
-        },
-    ];
-
+const FormSignupThree: React.FC<Props> = ({ handleInputChanges }) => {
     const now = new Date();
 
     const datepickerParams: DateParams = {
@@ -35,7 +20,7 @@ const FormSignupThree: React.FC<Props> = () => {
     return (
         <div>
             <h2 className="text-lg font-semibold">Tailles</h2>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-8 py-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 py-5">
                 <InputLabel
                     label="Taille pour le haut"
                     isRequired
